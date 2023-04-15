@@ -1,41 +1,34 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
+        Curso curso1 = new Curso("Programação em Java","Descrição do Curso",6);
+        Curso curso2 = new Curso("Orientação a Objetos","Descrição do Curso",4);
+        Desafio desafioCodigo1 = new Desafio("Desafio Iniciante","",1);
+        Desafio desafioCodigo2 = new Desafio("Desafio Intermediario","",3);
+        Mentoria mentoria = new Mentoria("Pirâmide de Testes", "Descrição da Mentoria", LocalDate.of(2023,05,20));
+
+        Bootcamp bootcampJava1 = new Bootcamp("Bootcamp Java Developer","Descrição do Bootcamp");
+
 
 //        System.out.println(curso1);
 //        System.out.println(mentoria);
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        bootcampJava1.getConteudos().add(curso1);
+        bootcampJava1.getConteudos().add(curso2);
+        bootcampJava1.getConteudos().add(desafioCodigo1);
+        bootcampJava1.getConteudos().add(mentoria);
+        bootcampJava1.getConteudos().add(desafioCodigo2);
+
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
+        devCamila.inscreverBootcamp(bootcampJava1);
         System.out.println("Conteudos Inscritos Camila: " + devCamila.getConteudosInscritos());
         devCamila.progredir();
         devCamila.progredir();
@@ -45,7 +38,7 @@ public class Main {
 
         Dev devJoao = new Dev();
         devJoao.setNome("João");
-        devJoao.inscreverBootcamp(bootcamp);
+        devJoao.inscreverBootcamp(bootcampJava1);
         System.out.println("Conteudos Inscritos João: " + devJoao.getConteudosInscritos());
         devJoao.progredir();
         devJoao.progredir();
